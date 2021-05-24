@@ -1,6 +1,8 @@
 In this analysis,I am trying to present complex data of covid cases in simple and visual format using power BI tools.
 ### In this report you will found some question which is related to COVID'19 data (Extracted from WHO Website till 19 May'21) you could found these questions into one report:
 
+![Generic badge](https://img.shields.io/badge/COVID-19-orange.svg)                ![Generic badge](https://img.shields.io/badge/Power-BI-green.svg)           ![Generic badge](https://img.shields.io/badge/Analysis-v1-orange.svg)                               ![Generic badge](https://img.shields.io/badge/Analysis-May21-orange.svg)
+
  ### Who's most affected region due to corona.
  #### Where is most cases reported in last 24 H. 
  #### Where is most cases reported in last 7 Days. 
