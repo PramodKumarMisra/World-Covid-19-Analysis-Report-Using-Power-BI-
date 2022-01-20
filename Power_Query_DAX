@@ -1,0 +1,28 @@
+For report one DAX query :
+let
+    Source = Pdf.Tables(File.Contents("C:\Users\Vaidy\Desktop\Omnicorn\CummulativeCovidVaccinationReport16January2022.pdf"), [Implementation="1.2"]),
+    Table002 = Source{[Id="Table002"]}[Data],
+    #"Changed Type" = Table.TransformColumnTypes(Table002,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}}),
+    #"Removed Top Rows" = Table.Skip(#"Changed Type",2),
+    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"S.#(lf)No#(lf).", Int64.Type}, {"State/UT", type text}, {"1st Dose", Int64.Type}, {"2nd Dose", Int64.Type}, {"1st Dose_1", Int64.Type}, {"Precaution Dose", Int64.Type}, {"Total Doses", Int64.Type}}),
+    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"S.#(lf)No#(lf)."}),
+    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"1st Dose_1", "1st Dose(15-18+)"}, {"1st Dose", "1st Dose(18+)"}, {"2nd Dose", "2nd Dose(18+)"}})
+in
+    #"Renamed Columns"
+    
+    
+    
+    For Report two (Including Pie Charts): DAX Query
+    
+    let
+    Source = Pdf.Tables(File.Contents("C:\Users\Vaidy\Desktop\Omnicorn\CummulativeCovidVaccinationReport16January2022.pdf"), [Implementation="1.2"]),
+    Table002 = Source{[Id="Table002"]}[Data],
+    #"Changed Type" = Table.TransformColumnTypes(Table002,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}}),
+    #"Removed Top Rows" = Table.Skip(#"Changed Type",2),
+    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
+    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"S.#(lf)No#(lf).", Int64.Type}, {"State/UT", type text}, {"1st Dose", Int64.Type}, {"2nd Dose", Int64.Type}, {"1st Dose_1", Int64.Type}, {"Precaution Dose", Int64.Type}, {"Total Doses", Int64.Type}}),
+    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"S.#(lf)No#(lf)."}),
+    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"1st Dose_1", "1st Dose(15-18+)"}, {"1st Dose", "1st Dose(18+)"}, {"2nd Dose", "2nd Dose(18+)"}})
+in
+    #"Renamed Columns"
